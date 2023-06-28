@@ -14,7 +14,7 @@ function SideBar() {
     <div
       className={` ${
         open ? "w-72" : "w-20 "
-      } bg-dark-purple h-screen p-5 pt-8 relative duration-300 `}
+      } bg-dark-purple h-screen p-5 pt-8  duration-300 sticky top-0 `}
       id="sidebar"
     >
       <BsFillArrowLeftCircleFill
