@@ -1,18 +1,21 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addStudent } from "../redux/slices/students";
+import { useEffect, useState } from "react";
+import { fetchSingleStudent } from "../redux/slices/students";
+import { updateStudent } from "../redux/slices/students";
+import { useDispatch, useSelector } from "react-redux";
 
-function AddStudents({ show, hide }) {
+function EditStudents({ show, hide, id }) {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [phone, setphone] = useState("");
 
   const dispatch = useDispatch();
+
   const student = {
     name: name,
     email: email,
     phoneNumber: phone,
   };
+  console.log("name: ", student);
 
   if (!show) {
     return null; // Return null if show is false to hide the modal
@@ -27,7 +30,7 @@ function AddStudents({ show, hide }) {
       <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
         <div class="">
           <div class="text-center p-5 flex-auto justify-center ">
-            <h2 className="text-xl font-bold py-4 mb-3">Add Student</h2>
+            <h2 className="text-xl font-bold py-4 mb-3">Update Student</h2>
 
             <div className="flex justify-between">
               <div className="flex flex-col gap-4">
@@ -71,7 +74,7 @@ function AddStudents({ show, hide }) {
             </button>
             <button
               class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue"
-              onClick={() => dispatch(addStudent(student))}
+              onClick={() => dispatch(updateStudent(id, student))}
             >
               Save
             </button>
@@ -82,4 +85,4 @@ function AddStudents({ show, hide }) {
   );
 }
 
-export default AddStudents;
+export default EditStudents;

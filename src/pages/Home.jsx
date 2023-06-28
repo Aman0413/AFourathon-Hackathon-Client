@@ -1,10 +1,10 @@
 import React from "react";
-import AddStudents from "../components/AddStudent";
+import SeeSingleStudent from "../components/SeeSingleStudent";
 
 function Home() {
   return (
     <div className="w-screen h-screen bg-red-200">
-      <AddStudents />
+      <SeeSingleStudent />
       Home Page
     </div>
   );
