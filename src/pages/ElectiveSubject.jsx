@@ -5,20 +5,37 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import { LuEye } from "react-icons/lu";
 import { IoMdAdd } from "react-icons/io";
 import SeeFullSubject from "../components/Elective/SeeFullSubject";
+import UpdateSubject from "../components/Elective/UpdateSubject";
+import DeleteSubject from "../components/Elective/DeleteSubject";
+import Loader from "../components/Loader";
 
 function ElectiveSubject() {
   const dispatch = useDispatch();
   const [id, setId] = useState("");
   const subject = useSelector((state) => state.subjects);
   const [showSeeFullSubject, setShowSeeFullSubject] = useState(false);
+  const [showUpdateBox, setShowUpdateBox] = useState(false);
+  const [showDeleteBox, setShowDeleteBox] = useState(false);
 
   const hide = () => {
     setShowSeeFullSubject(false);
+    setShowUpdateBox(false);
+    setShowDeleteBox(false);
   };
 
   const showSeeFullSubjectModal = (id) => {
     setId(id);
     setShowSeeFullSubject(true);
+  };
+
+  const showUpdateModal = (id) => {
+    setId(id);
+    setShowUpdateBox(true);
+  };
+
+  const showDeleteModal = (id) => {
+    setId(id);
+    setShowDeleteBox(true);
   };
 
   useEffect(() => {
@@ -27,6 +44,7 @@ function ElectiveSubject() {
 
   return (
     <div class="w-full px-3 py-3 mt-3">
+      {subject.isLoading ? <Loader /> : null}
       <div className="flex justify-end">
         <button class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue flex justify-center items-center gap-1">
           <IoMdAdd className="text-2xl " />
@@ -73,8 +91,14 @@ function ElectiveSubject() {
                           className="font-semibold text-xl hover:text-dark-purple hover:font-extrabold"
                           onClick={() => showSeeFullSubjectModal(item._id)}
                         />
-                        <AiOutlineEdit className="font-semibold text-green-700 text-xl hover:text-dark-purple hover:font-extrabold" />
-                        <AiOutlineDelete className="font-semibold text-red-600 text-xl hover:text-dark-purple hover:font-extrabold" />
+                        <AiOutlineEdit
+                          className="font-semibold text-green-700 text-xl hover:text-dark-purple hover:font-extrabold"
+                          onClick={() => showUpdateModal(item._id)}
+                        />
+                        <AiOutlineDelete
+                          className="font-semibold text-red-600 text-xl hover:text-dark-purple hover:font-extrabold"
+                          onClick={() => showDeleteModal(item._id)}
+                        />
                       </div>
                     </td>
                   </tr>
@@ -86,6 +110,13 @@ function ElectiveSubject() {
 
       {showSeeFullSubject && (
         <SeeFullSubject show={showSeeFullSubjectModal} hide={hide} id={id} />
+      )}
+      {showUpdateBox && (
+        <UpdateSubject show={showUpdateModal} hide={hide} id={id} />
+      )}
+
+      {showDeleteBox && (
+        <DeleteSubject show={showDeleteModal} hide={hide} id={id} />
       )}
     </div>
   );

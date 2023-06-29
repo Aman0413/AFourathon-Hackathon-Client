@@ -1,12 +1,12 @@
-
+import React from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { deleteSubject } from "../../redux/slices/elctive";
 import { useDispatch } from "react-redux";
 
-function DeleteStudent({ show, hide, deleteStudent, id }) {
+function DeleteSubject({ show, hide, id }) {
   const dispatch = useDispatch();
-  if (!show) {
-    return null; // Return null if show is false to hide the modal
-  }
+
+  if (!show) return null;
 
   return (
     <div
@@ -24,7 +24,7 @@ function DeleteStudent({ show, hide, deleteStudent, id }) {
             <h2 className="text-xl font-bold py-4">Are you sure?</h2>
             <p className="text-sm text-gray-500 px-8">
               {" "}
-              Do you really want to delete your student?
+              Do you really want to delete subject?
             </p>
           </div>
 
@@ -37,9 +37,7 @@ function DeleteStudent({ show, hide, deleteStudent, id }) {
             </button>
             <button
               class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue"
-              onClick={() => {
-                dispatch(deleteStudent(id));
-              }}
+              onClick={() => dispatch(deleteSubject(id))}
             >
               Delete
             </button>
@@ -50,4 +48,4 @@ function DeleteStudent({ show, hide, deleteStudent, id }) {
   );
 }
 
-export default DeleteStudent;
+export default DeleteSubject;

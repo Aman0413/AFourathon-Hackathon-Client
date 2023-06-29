@@ -9,6 +9,7 @@ import { IoMdAdd } from "react-icons/io";
 import AddStudents from "../components/AddStudent";
 import EditStudents from "../components/EditStudent";
 import SeeSingleStudent from "../components/SeeSingleStudent";
+import Loader from "../components/Loader";
 
 function Students() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -50,6 +51,7 @@ function Students() {
   return (
     <>
       <div class="w-full px-3 py-3 mt-3">
+        {students.isLoading ? <Loader /> : null}
         <div className="flex justify-end">
           <button
             class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue flex justify-center items-center gap-1"

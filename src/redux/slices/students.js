@@ -1,4 +1,5 @@
 import axios from "../../utils/axiosClient";
+import { toast } from "react-toastify";
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -53,13 +54,18 @@ const studentsSlice = createSlice({
   extraReducers: (builder) => {
     //update student
     builder.addCase(updateStudent.fulfilled, (state, action) => {
+      toast.success("Student Updated successfully", {
+        position: "top-center",
+      });
       state.isLoading = false;
     });
     builder.addCase(updateStudent.pending, (state, action) => {
       state.isLoading = false;
     });
     builder.addCase(updateStudent.rejected, (state, action) => {
-      console.log("Error", action.error.message);
+      toast.error("Error ", action.error.message, {
+        position: "top-center",
+      });
       state.isLoading = false;
       state.isError = true;
     });
@@ -73,7 +79,9 @@ const studentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchSingleStudent.rejected, (state, action) => {
-      console.log("Error", action.error.message);
+      toast.error("Error ", action.error.message, {
+        position: "top-center",
+      });
       state.isLoading = false;
       state.isError = true;
     });
@@ -81,12 +89,17 @@ const studentsSlice = createSlice({
     //add student
     builder.addCase(addStudent.fulfilled, (state, action) => {
       state.isLoading = false;
+      toast.success("Student Added successfully", {
+        position: "top-center",
+      });
     });
     builder.addCase(addStudent.pending, (state, action) => {
       state.isLoading = true;
     });
     builder.addCase(addStudent.rejected, (state, action) => {
-      console.log("Error", action.error.message);
+      toast.error("Error ", action.error.message, {
+        position: "top-center",
+      });
       state.isLoading = false;
       state.isError = true;
     });
@@ -94,12 +107,17 @@ const studentsSlice = createSlice({
     //delete student
     builder.addCase(deleteStudent.fulfilled, (state, action) => {
       state.isLoading = false;
+      toast.success("Student Deleted successfully", {
+        position: "top-center",
+      });
     });
     builder.addCase(deleteStudent.pending, (state, action) => {
       state.isLoading = true;
     });
     builder.addCase(deleteStudent.rejected, (state, action) => {
-      console.log("Error", action.error.message);
+      toast.error("Error ", action.error.message, {
+        position: "top-center",
+      });
       state.isLoading = false;
       state.isError = true;
     });
@@ -113,7 +131,9 @@ const studentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchStudents.rejected, (state, action) => {
-      console.log("Error", action.error.message);
+      toast.error("Error ", action.error.message, {
+        position: "top-center",
+      });
       state.isLoading = false;
       state.isError = true;
     });
