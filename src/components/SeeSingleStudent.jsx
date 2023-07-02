@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BiSolidUser } from "react-icons/bi";
+import axios from "../utils/axiosClient";
 
-function SeeSingleStudent({ show, hide }) {
+function SeeSingleStudent({ show, hide, id }) {
+  const [student, setStudent] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log("id " + id);
+
+  const getStudent = async (id) => {
+    try {
+      const res = await axios.get(`student/${id}`);
+      setStudent(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {}, []);
+
   if (!show) return null;
   return (
     <div
@@ -16,25 +33,29 @@ function SeeSingleStudent({ show, hide }) {
             <BiSolidUser className="text-6xl" />
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 ">
             <div className="flex justify-evenly">
-              <div className="flex gap-2">
-                <label htmlFor="">Student Id:</label>
-                <span>123321</span>
+              <div className="flex gap-2 bg-[#e4e7eb] py-2 w-40 justify-center items-center rounded-md">
+                <span>Name</span>
+                <span>Aman Verma</span>
               </div>
-              <div className="flex gap-2">
-                <label htmlFor="">Student Name:</label>
-                <span>Aman</span>
+              <div className="flex gap-2 ">
+                <div className="flex gap-2 bg-[#e4e7eb] py-2 w-40 justify-center items-center rounded-md">
+                  <span>Student Id</span>
+                  <span>ER312</span>
+                </div>
               </div>
             </div>
             <div className="flex justify-evenly">
-              <div className="flex gap-2">
-                <label htmlFor="">Email:</label>
+              <div className="flex gap-2 bg-[#e4e7eb] py-2 w-40 justify-center items-center rounded-md">
+                <span>Email</span>
                 <span>aman@gmail.com</span>
               </div>
               <div className="flex gap-2">
-                <label htmlFor="">Phone:</label>
-                <span>133213212</span>
+                <div className="flex gap-2 bg-[#e4e7eb] py-2 w-40 justify-center items-center rounded-md">
+                  <span>Phone</span>
+                  <span>1236237621</span>
+                </div>
               </div>
             </div>
           </div>
@@ -46,7 +67,12 @@ function SeeSingleStudent({ show, hide }) {
             >
               Cancel
             </button>
-            <button class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue">
+            <button
+              class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue"
+              onClick={() => {
+                getStudent(id);
+              }}
+            >
               Save
             </button>
           </div>

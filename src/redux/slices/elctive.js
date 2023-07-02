@@ -40,6 +40,12 @@ export const deleteSubject = createAsyncThunk("deleteSubject", async (id) => {
   return res.data;
 });
 
+//add subject
+export const addSubject = createAsyncThunk("addSubject", async (subject) => {
+  const res = await axios.post("/electivesubject/add", subject);
+  return res.data;
+});
+
 const subjectSlice = createSlice({
   name: "subject",
   initialState: {
@@ -49,6 +55,24 @@ const subjectSlice = createSlice({
     isError: false,
   },
   extraReducers: (builder) => {
+    //add subject
+    builder.addCase(addSubject.fulfilled, (state, action) => {
+      state.isLoading = false;
+      toast.success("Subject added successfully", {
+        position: "top-center",
+      });
+    });
+    builder.addCase(addSubject.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(addSubject.rejected, (state, action) => {
+      toast.error("Error", action.error.message, {
+        position: "top-center",
+      });
+      state.isLoading = false;
+      state.isError = true;
+    });
+
     //delete subject
     builder.addCase(deleteSubject.fulfilled, (state, action) => {
       state.isLoading = false;

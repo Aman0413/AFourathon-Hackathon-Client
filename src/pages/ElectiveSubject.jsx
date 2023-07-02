@@ -8,6 +8,7 @@ import SeeFullSubject from "../components/Elective/SeeFullSubject";
 import UpdateSubject from "../components/Elective/UpdateSubject";
 import DeleteSubject from "../components/Elective/DeleteSubject";
 import Loader from "../components/Loader";
+import AddSubject from "../components/Elective/AddSubject";
 
 function ElectiveSubject() {
   const dispatch = useDispatch();
@@ -16,11 +17,13 @@ function ElectiveSubject() {
   const [showSeeFullSubject, setShowSeeFullSubject] = useState(false);
   const [showUpdateBox, setShowUpdateBox] = useState(false);
   const [showDeleteBox, setShowDeleteBox] = useState(false);
+  const [showAddSubject, setShowAddSubject] = useState(false);
 
   const hide = () => {
     setShowSeeFullSubject(false);
     setShowUpdateBox(false);
     setShowDeleteBox(false);
+    setShowAddSubject(false);
   };
 
   const showSeeFullSubjectModal = (id) => {
@@ -37,6 +40,9 @@ function ElectiveSubject() {
     setId(id);
     setShowDeleteBox(true);
   };
+  const showAddSubjectModal = () => {
+    setShowAddSubject(true);
+  };
 
   useEffect(() => {
     dispatch(fetchSubjects());
@@ -46,7 +52,7 @@ function ElectiveSubject() {
     <div class="w-full px-3 py-3 mt-3">
       {subject.isLoading ? <Loader /> : null}
       <div className="flex justify-end">
-        <button class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue flex justify-center items-center gap-1">
+        <button class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue flex justify-center items-center gap-1" onClick={()=>showAddSubjectModal(true)}>
           <IoMdAdd className="text-2xl " />
           Add New Subject
         </button>
@@ -118,6 +124,7 @@ function ElectiveSubject() {
       {showDeleteBox && (
         <DeleteSubject show={showDeleteModal} hide={hide} id={id} />
       )}
+      {showAddSubject && <AddSubject show={showAddSubjectModal} hide={hide} />}
     </div>
   );
 }

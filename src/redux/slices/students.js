@@ -17,7 +17,6 @@ export const deleteStudent = createAsyncThunk("deleteStudent", async (id) => {
 
 //add new student
 export const addStudent = createAsyncThunk("addStudent", async (student) => {
-  console.log(student);
   const res = await axios.post("/student/add", student);
   return res.data;
 });

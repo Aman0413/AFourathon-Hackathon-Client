@@ -38,7 +38,8 @@ function Students() {
     setUpdateModalVisible(true);
   };
 
-  const showSeeStudent = () => {
+  const showSeeStudent = (id) => {
+    setId(id);
     setSeeStudent(true);
   };
   //get all students from store
@@ -104,7 +105,7 @@ function Students() {
                           <LuEye
                             className="font-semibold text-xl hover:text-dark-purple hover:font-extrabold"
                             onClick={() => {
-                              setSeeStudent(true);
+                              showSeeStudent(stu._id);
                             }}
                           />
                           <AiOutlineEdit
@@ -146,7 +147,7 @@ function Students() {
 
       {/* see student modal */}
       {seeStudent && (
-        <SeeSingleStudent show={showSeeStudent} hide={hideModal} />
+        <SeeSingleStudent show={showSeeStudent} hide={hideModal} id={id} />
       )}
     </>
   );
