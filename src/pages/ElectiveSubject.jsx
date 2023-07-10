@@ -49,10 +49,13 @@ function ElectiveSubject() {
   }, []);
 
   return (
-    <div class="w-full px-3 py-3 mt-3">
+    <div class="w-full px-3 py-3 mt-3 ">
       {subject.isLoading ? <Loader /> : null}
       <div className="flex justify-end">
-        <button class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue flex justify-center items-center gap-1" onClick={()=>showAddSubjectModal(true)}>
+        <button
+          class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue flex justify-center items-center gap-1"
+          onClick={() => showAddSubjectModal(true)}
+        >
           <IoMdAdd className="text-2xl " />
           Add New Subject
         </button>

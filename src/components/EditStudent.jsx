@@ -10,12 +10,9 @@ function EditStudents({ show, hide, id }) {
 
   const dispatch = useDispatch();
 
-  const student = {
-    name: name,
-    email: email,
-    phoneNumber: phone,
+  const handleSubmit = (id, name, email, phone) => {
+    dispatch(updateStudent({ id, name, email, phone }));
   };
-  console.log("name: ", student);
 
   if (!show) {
     return null; // Return null if show is false to hide the modal
@@ -74,7 +71,7 @@ function EditStudents({ show, hide, id }) {
             </button>
             <button
               class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue"
-              onClick={() => dispatch(updateStudent(id, student))}
+              onClick={() => handleSubmit(id, name, email, phone)}
             >
               Save
             </button>

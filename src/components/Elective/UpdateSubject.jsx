@@ -10,10 +10,8 @@ function UpdateSubject({ show, hide, id }) {
 
   if (!show) return null;
 
-  let student = {
-    name: subject,
-    code: code,
-    description: description,
+  const handleSubmit = (id, subject, code, description) => {
+    dispatch(updateSubject({ id, subject, code, description }));
   };
 
   return (
@@ -68,7 +66,7 @@ function UpdateSubject({ show, hide, id }) {
             <button
               class="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue"
               onClick={() => {
-                dispatch(updateSubject(id, student));
+                handleSubmit(id, subject, code, description);
               }}
             >
               Save

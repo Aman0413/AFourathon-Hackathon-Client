@@ -22,22 +22,36 @@ export const addStudent = createAsyncThunk("addStudent", async (student) => {
 });
 
 //update student
-export const updateStudent = createAsyncThunk(
-  "updateStudent",
-  async (id, student) => {
-    const res = await axios.put(`/student/update/${id}`, {
-      student,
-    });
-    console.log(res.data);
-    return res.data;
-  }
-);
+export const updateStudent = createAsyncThunk("updateStudent", async (data) => {
+  console.log(data);
+  const res = await axios.put(`/student/update/${data.id}`, {
+    name: data.name,
+    email: data.email,
+    phoneNumber: data.phone,
+  });
+  console.log(res.data);
+  return res.data;
+});
 
 //get single student
 export const fetchSingleStudent = createAsyncThunk(
   "fetchSingleStudent",
   async (id) => {
     const res = await axios.get(`/student/get/${id}`);
+    return res.data;
+  }
+);
+
+//add elective subject to student
+export const addElectiveSubjectToStudent = createAsyncThunk(
+  "addElectiveSubjectToStudent",
+  async (data) => {
+    const res = await axios.post(`/student/addElectiveSub/${data.id}`, {
+      firstSubjectId: data.firstSubject,
+      secondSubjectId: data.secondSubject,
+    });
+    console.log(res.data);
+
     return res.data;
   }
 );
@@ -51,6 +65,24 @@ const studentsSlice = createSlice({
     isError: false,
   },
   extraReducers: (builder) => {
+    //add elective subject to student
+    builder.addCase(addElectiveSubjectToStudent.fulfilled, (state, action) => {
+      state.isLoading = false;
+      toast.success(action, {
+        position: "top-center",
+      });
+    });
+    builder.addCase(addElectiveSubjectToStudent.pending, (state, action) => {
+      state.isLoading = false;
+    });
+    builder.addCase(addElectiveSubjectToStudent.rejected, (state, action) => {
+      toast.error(action.error.message, {
+        position: "top-center",
+      });
+      state.isLoading = false;
+      state.isError = true;
+    });
+
     //update student
     builder.addCase(updateStudent.fulfilled, (state, action) => {
       toast.success("Student Updated successfully", {
@@ -62,7 +94,7 @@ const studentsSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(updateStudent.rejected, (state, action) => {
-      toast.error("Error ", action.error.message, {
+      toast.error(action.error.message, {
         position: "top-center",
       });
       state.isLoading = false;
@@ -78,7 +110,7 @@ const studentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchSingleStudent.rejected, (state, action) => {
-      toast.error("Error ", action.error.message, {
+      toast.error(action.error.message, {
         position: "top-center",
       });
       state.isLoading = false;
@@ -96,7 +128,7 @@ const studentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(addStudent.rejected, (state, action) => {
-      toast.error("Error ", action.error.message, {
+      toast.error(action.error.message, {
         position: "top-center",
       });
       state.isLoading = false;
@@ -114,7 +146,7 @@ const studentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(deleteStudent.rejected, (state, action) => {
-      toast.error("Error ", action.error.message, {
+      toast.error(action.error.message, {
         position: "top-center",
       });
       state.isLoading = false;
@@ -130,7 +162,7 @@ const studentsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(fetchStudents.rejected, (state, action) => {
-      toast.error("Error ", action.error.message, {
+      toast.error(action.error.message, {
         position: "top-center",
       });
       state.isLoading = false;

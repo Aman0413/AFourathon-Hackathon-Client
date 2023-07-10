@@ -12,7 +12,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <ToastContainer />
+    <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      closeOnClick
+      rtl={false}
+      newestOnTop={false}
+    />
     <BrowserRouter>
       <Provider store={store}>
         <App />
