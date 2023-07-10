@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Elective Subject Selection Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the code for the Elective Subject Selection Project, which is developed as part of the AFourathon 3.0 Hackathon. The project consists of three problem statements related to student details, elective subjects, and subject selection. The project is built using the MERN (MongoDB, Express.js, React, Node.js) stack.
 
-## Available Scripts
+### Live:
 
-In the project directory, you can run:
+## Problem Statements
 
-### `npm start`
+1. Student Details App: A containerized application for creating, updating, and deleting student details. Each student should have a name, ID number, email, and phone number.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Elective Subject App: A containerized application for managing elective subjects. Each subject should have a name, description, and code.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Elective Subject Selection App: A containerized application for selecting, updating, and deleting elective subjects for each student, as well as selecting, updating, and deleting the students who have chosen a particular elective subject.
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project is built using the following technologies:
 
-### `npm run build`
+- Backend: Node.js, Express.js, MongoDB
+- Frontend: React
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To use the Elective Subject Selection Project, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   `git clone https://github.com/Aman0413/AFourathon-Hackathon-Server`
 
-### `npm run eject`
+`git clone https://github.com/Aman0413/AFourathon-Hackathon-Client`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install the dependencies for both the backend and frontend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install backend dependencies
+`cd backend
+npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Install frontend dependencies
+`cd frontend
+npm install`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Set up the MongoDB connection:
+   - Make sure you have MongoDB installed and running locally or provide the appropriate MongoDB connection string in the backend's .env file
 
-## Learn More
+# Use the application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The application consists of two main pages: the Student Page and the Elective Subject Page.
+- On the Student Page, you can select a student from the list and manage their elective subjects. You can add, update, or delete elective subjects for the selected student.
+- On the Elective Subject Page, you can select an elective subject from the list and manage the students who have chosen that subject. You can add, update, or delete students for the selected elective subject.
+- All changes made in the application will be synchronized with the backend and persisted in the database.
