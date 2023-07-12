@@ -97,15 +97,15 @@ function ElectiveSubject() {
                     <td class="py-3 px-6 text-center">
                       <div class="flex item-center justify-center gap-5">
                         <LuEye
-                          className="font-semibold text-xl hover:text-dark-purple hover:font-extrabold"
+                          className="font-semibold text-xl hover:text-dark-purple hover:font-extrabold transition duration-300 ease-in-out hover:scale-125 active:scale-110"
                           onClick={() => showSeeFullSubjectModal(item._id)}
                         />
                         <AiOutlineEdit
-                          className="font-semibold text-green-700 text-xl hover:text-dark-purple hover:font-extrabold"
+                          className="font-semibold text-green-700 text-xl hover:text-dark-purple hover:font-extrabold  transition duration-300 ease-in-out hover:scale-125 active:scale-110"
                           onClick={() => showUpdateModal(item._id)}
                         />
                         <AiOutlineDelete
-                          className="font-semibold text-red-600 text-xl hover:text-dark-purple hover:font-extrabold"
+                          className="font-semibold text-red-600 text-xl hover:text-dark-purple hover:font-extrabold transition duration-300 ease-in-out hover:scale-125 active:scale-110"
                           onClick={() => showDeleteModal(item._id)}
                         />
                       </div>

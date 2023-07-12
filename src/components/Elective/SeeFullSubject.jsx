@@ -25,7 +25,7 @@ function SeeFullSubject({ show, hide, id }) {
           {subject && <SubjectCard subject={subject} key={subject._id} />}
 
           <button
-            className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 mt-3"
+            className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 mt-3 transition duration-300 ease-in-out active:scale-95"
             onClick={hide}
           >
             Cancel

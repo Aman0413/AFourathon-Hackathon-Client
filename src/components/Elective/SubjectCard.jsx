@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { deleteStudentFromSubject } from "../../redux/slices/elctive";
 
@@ -26,13 +25,16 @@ function SubjectCard({ subject }) {
         </div>
 
         {subject && subject.students.length > 0 ? (
-          subject.students.map((stu) => {
+          subject.students.map((stu, index) => {
             return (
-              <div className="flex justify-between items-center bg-[#e5e7eb] py-2 px-2 rounded-md">
+              <div
+                className="flex justify-between items-center bg-[#e5e7eb] py-2 px-2 rounded-md"
+                key={index}
+              >
                 <p className="font-semibold">{stu.name}</p>
                 <p>{stu.studentId}</p>
                 <button
-                  className="bg-dark-purple text-white rounded-full w-10 h-10 flex justify-center items-center"
+                  className="bg-dark-purple text-white rounded-full w-10 h-10 flex justify-center items-center transition duration-300 ease-in-out active:scale-95 "
                   onClick={() => {
                     handleDelete(stu._id, subject._id);
                   }}

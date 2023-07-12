@@ -97,7 +97,7 @@ function SeeSingleStudent({ show, hide, id }) {
                   <p className="font-semibold">{stu.name}</p>
                   <p>{stu.code}</p>
                   <button
-                    className="bg-dark-purple text-white rounded-full w-10 h-10 flex justify-center items-center"
+                    className="bg-dark-purple text-white rounded-full w-10 h-10 flex justify-center items-center transition duration-300 ease-in-out active:scale-95"
                     onClick={() => {
                       handleDelete(id, stu._id);
                     }}
@@ -153,13 +153,13 @@ function SeeSingleStudent({ show, hide, id }) {
           </form>
           <div className="p-3  mt-2 text-center space-x-4 md:block">
             <button
-              className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+              className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100 transition duration-300 ease-in-out active:scale-95"
               onClick={hide}
             >
               Cancel
             </button>
             <button
-              className="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue"
+              className="mb-2 md:mb-0 bg-dark-purple border border-dark-purple-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-dark-blue transition duration-300 ease-in-out active:scale-95"
               onClick={() => {
                 handleSubmit(id, firstSubject, secondSubject);
               }}
