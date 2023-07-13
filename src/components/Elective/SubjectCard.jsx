@@ -9,13 +9,14 @@ function SubjectCard({ subject }) {
   };
 
   return (
-    <div className="SubjectCard max-w-md py-4 px-8 bg-white rounded-lg ">
+    <div className="SubjectCard max-w-md py-4 px-8 bg-white rounded-lg w-full z-10">
       <div className="flex flex-col gap-3">
         <h2 class="text-gray-800 text-3xl font-semibold">{subject.name}</h2>
         <div className="flex gap-4 text-xSl">
           <p>Code</p>
           <p className="font-semibold">{subject.code}</p>
         </div>
+
         <p className="mt-2 text-gray-600">{subject.description}</p>
       </div>
 

@@ -44,6 +44,9 @@ function Students() {
   };
   //get all students from store
   const students = useSelector((state) => state.students);
+  if (students) {
+    console.log(students);
+  }
 
   useEffect(() => {
     //get all students dispatch action
